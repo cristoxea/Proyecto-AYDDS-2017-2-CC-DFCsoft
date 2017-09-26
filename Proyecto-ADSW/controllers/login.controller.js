@@ -4,6 +4,7 @@ module.exports.authenticate=function(email, password, req, res){
     console.log(email);
     console.log(password);
     connection.query('SELECT * FROM User WHERE email  = ?',[email], function (error, results, fields) {
+        console.log(results[0]);
         if (error) {
             res.json({
                 status:false,
@@ -11,7 +12,7 @@ module.exports.authenticate=function(email, password, req, res){
             });
         }else{
             if(results.length >0){
-                if(password==results[0].pass){
+                if(password==results[0].password){
                     var sess;
                     sess = req.session;
                     sess.email = email;
@@ -19,7 +20,7 @@ module.exports.authenticate=function(email, password, req, res){
                     sess.type = 'userRegistered';
                     res.redirect('/success');
                 }else{
-                    res.redirect('/login/error=0');
+                    //res.redirect('/login/error=0');
                     res.json({
                         status:false,
                         message:"Nick and password does not match"
@@ -27,7 +28,7 @@ module.exports.authenticate=function(email, password, req, res){
                 }
             }
             else{
-                res.redirect('/error?0')
+                //res.redirect('/error?0')
                 res.json({
                     status:false,
                     message:"Nick does not exits"

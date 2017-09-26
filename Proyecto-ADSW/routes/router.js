@@ -32,6 +32,7 @@ router.get('/login', function (req, res) {
 router.post('/login', function (req, res) {
     var email = req.body.email;
     var pass = req.body.password;
+    console.log(email);
     login.authenticate(email, pass, req, res);
 
 });
@@ -63,6 +64,7 @@ router.get('/success', function (req, res) {
         res.redirect('/login');
     }
 });
+
 router.get('/record', function (req, res) {
     sess= req.session;
     if (sess.nick !== undefined) {
@@ -71,6 +73,7 @@ router.get('/record', function (req, res) {
         res.redirect('/login');
     }
 });
+
 router.get('/session', function (req, res) {
     sess= req.session;
     if (sess.nick !== undefined) {
