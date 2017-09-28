@@ -32,7 +32,6 @@ router.get('/login', function (req, res) {
 router.post('/login', function (req, res) {
     var email = req.body.email;
     var pass = req.body.password;
-    console.log(email);
     login.authenticate(email, pass, req, res);
 
 });
@@ -88,7 +87,6 @@ router.post('/session', function (req, res) {
     var descS = req.body.descSesion;
     var durS = req.body.durSesion;
     sesion.create(nombreS, descS, durS, req, res);
-
 });
 
 router.get('/sessionInv', function (req, res) {

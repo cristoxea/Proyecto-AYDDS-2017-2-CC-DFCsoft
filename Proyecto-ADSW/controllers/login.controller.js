@@ -1,10 +1,7 @@
 var connection = require('../connection/DBconnect');
 
 module.exports.authenticate=function(email, password, req, res){
-    console.log(email);
-    console.log(password);
     connection.query('SELECT * FROM User WHERE email  = ?',[email], function (error, results, fields) {
-        console.log(results[0]);
         if (error) {
             res.json({
                 status:false,
@@ -39,7 +36,6 @@ module.exports.authenticate=function(email, password, req, res){
 };
 
 module.exports.authenticateG=function(nickname, req, res){
-    console.log(nickname);
     connection.query('SELECT * FROM Guest WHERE nick  = ?',[nickname], function (error, results, fields) {
         if(nickname.length == 0) {
             res.redirect('/Guest');

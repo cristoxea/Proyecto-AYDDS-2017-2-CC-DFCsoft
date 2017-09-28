@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>NO hago ni una wea xdxdxdxdxd</title>
+    <title>Sesion</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
     <style>
@@ -10,6 +10,27 @@
     </style>
 </head>
 <body>
+<h1>Tiempo <span class="label label-default" id="Timer">></span></h1>
+<script>
+    var countDownDate = new Date("Jan 5, 2018 15:37:25").getTime();
+    var x = setInterval(function() {
+        var now = new Date().getTime(); //Se obtiene la fecha y hora de hoy.
+        var distance = countDownDate - now; //Distancia entra la fecha actual y la limite.
+        // Se calcula el tiempo para cada variable.
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        // Muestra el contador en id="Timer"
+        document.getElementById("Timer").innerHTML = days + "d " + hours + "h "
+            + minutes + "m " + seconds + "s ";
+        // Si el contador llega a cero muestra un mensaje.
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("demo").innerHTML = "Time Over!";
+        }
+    }, 1000);
+</script>
 <a href="./logout" class="btn btn-default"><span class="fa fa-user"></span> Logout</a>
 
 </body>
